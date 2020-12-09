@@ -1,5 +1,5 @@
 function loadCatatan() {
-    if (localStorage.list_data) {
+    if (localStorage.list_data && localStorage.id_data) {
         list_data = JSON.parse(localStorage.getItem('list_data'));
         var data_app = "";
         if (list_data.length > 0) {
