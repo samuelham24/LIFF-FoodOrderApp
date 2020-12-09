@@ -55,3 +55,121 @@ button {
 .hidden {
 	display: none;
 }
+
+p {
+	font-weight: 500;
+	font-size: 14px;
+	text-align: center;
+}
+
+.welcome-section {
+	height: 100vh;
+	background-image: url('img/restaurant.jpg');
+	background-size: cover;
+	background-position: center;
+	justify-items: center;
+	padding: 10px;
+	padding-top: 40vh;
+}
+
+.welcome-section-text {
+	background-color: white;
+	border-radius: 10px;
+	opacity: 0.8;
+	width: 500px;
+	margin: auto;
+	padding: 10px;
+}
+
+.food-section-container {
+	justify-content: center;
+	align-items: center;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+.menu-container-food {
+	padding-right: auto;
+}
+
+.card-nasgor-img {
+	width: 196px;
+	height: 120px;
+	background-image: url('img/nasgor.jpg');
+	background-size: cover;
+}
+
+.card-mie-img {
+	width: 196px;
+	height: 120px;
+	background-image: url('img/mieayam.jpg');
+	background-size: cover;
+}
+
+.card-jeruk-img {
+	width: 196px;
+	height: 150px;
+	background-image: url('img/jusjeruk.jpg');
+	background-size: cover;
+}
+
+.card-jambu-img {
+	width: 196px;
+	height: 150px;
+	background-image: url('img/jusjambu.jpg');
+	background-size: cover;
+}
+
+.menu-section-input {
+	display: flex;
+	padding: 10px;
+}
+
+.inputForm {
+	width: 31px;
+	height: 31px;
+}
+
+.inc-value,
+.dec-value,
+.addItem {
+	margin-bottom: 5px;
+	padding: 0px;
+	margin: 0px 5px;
+	height: 30px;
+	width: 30px;
+}
+
+.card {
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.card-input-value {
+	padding: 0px;
+	border: 0px;
+	width: 30px;
+	height: 30px;
+}
+
+.dec-value-hidden {
+	visibility: hidden;
+}
+
+.form-control {
+	all: unset;
+	pointer-events: none;
+}
+
+.food-section-container {
+	display: none;
+}
+
+th {
+	padding: 20px !important;
+}
+
+.purchase-section-titile {
+	margin-top: 30px;
+}
