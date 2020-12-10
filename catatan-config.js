@@ -1,4 +1,5 @@
 var MyMenu = {}; //Global object
+var MenuEmpty = {};
 
 function loadCatatan() {
     if (localStorage.menuList && localStorage.menuId) {
@@ -64,6 +65,8 @@ function loadCatatan() {
                 menuApp += '</tr>';
         }
         else {
+            MenuEmpty = true;
+            
             menuApp += '<tr>';
                 menuApp +=
                     '<td colspan="4"><p>' + 'Belum ada menu yang dipesan' + ' </p></td>'

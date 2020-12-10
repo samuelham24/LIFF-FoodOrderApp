@@ -201,7 +201,7 @@ document.getElementById('closeWindowButton').addEventListener('click', function(
                     window.alert('Error sending message: ' + error);
                 });
             }
-            else if(MyMenu.makanan == 0 && MyMenu.minuman == 0){
+            else if(MenuEmpty == true){
                 liff.sendMessages([{
                     'type': 'text',
                     'text': `Terima kasih saudara/i ${getProfileName.getDisplayName} sudah mengunjungi Resto Indonesia!`,
