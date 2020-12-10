@@ -201,16 +201,6 @@ document.getElementById('closeWindowButton').addEventListener('click', function(
                     window.alert('Error sending message: ' + error);
                 });
             }
-            else if(MenuEmpty == true){
-                liff.sendMessages([{
-                    'type': 'text',
-                    'text': `Terima kasih saudara/i ${getProfileName.getDisplayName} sudah mengunjungi Resto Indonesia!`,
-                }]).then(function() {
-                    window.alert('Terima Kasih Atas Kunjungan Anda!');
-                }).catch(function(error) {
-                    window.alert('Error sending message: ' + error);
-                });
-            }
         }
     });
 }

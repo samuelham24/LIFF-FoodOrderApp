@@ -1,5 +1,4 @@
 var MyMenu = {}; //Global object
-var MenuEmpty = {};
 
 function loadCatatan() {
     if (localStorage.menuList && localStorage.menuId) {
@@ -49,7 +48,9 @@ function loadCatatan() {
                 menuApp += '<tr>';
                     menuApp +=
                         '<td colspan="2"><p>' + 'Total Pesanan :' + ' </p></td>' +
-                        '<td colspan="2"><p>' + MyMenu.makanan  + ' Makanan' + '</p></td>';
+                        '<td colspan="2"><p>' + MyMenu.makanan  + ' Makanan' + '</p></td>' +
+                        '<td><button id="sendMessageButton" class="btn btn-success btn-small">Pesan</button></td>'
+                        ;
                     menuApp += '</tr>';
             }
 
@@ -61,12 +62,10 @@ function loadCatatan() {
             menuApp += '<tr>';
                 menuApp +=
                     '<td colspan="2"><p>' + 'Total Harga :' + ' </p></td>' +
-                    '<td colspan="2"><p>' + 'Rp ' + MyMenu.total + ' </p></td>';
+                    '<td ><p>' + 'Rp ' + MyMenu.total + ' </p></td>';
                 menuApp += '</tr>';
         }
         else {
-            MenuEmpty = true;
-            
             menuApp += '<tr>';
                 menuApp +=
                     '<td colspan="4"><p>' + 'Belum ada menu yang dipesan' + ' </p></td>'
