@@ -161,47 +161,49 @@ document.getElementById('closeWindowButton').addEventListener('click', function(
         if (!liff.isInClient()) {
             sendAlertIfNotInClient();
         } else {
-            if (MyMenu.makanan > 0 && MyMenu.minuman > 0){
-                liff.sendMessages([{
-                    'type': 'text',
-                    'text': 
-                    `Terima kasih sudah mengunjungi Resto Indonesia!` + `\n\n` + `Pesanan saudara/i ${getProfileName.getDisplayName} yaitu :`+ `\n` + 
-                    `- ${MyMenu.makanan} makanan`+ `\n` + 
-                    `- ${MyMenu.minuman} minuman`+ `\n\n` + 
-                    `Total pembayaran anda sebesar Rp ${MyMenu.total}.`,
-                }]).then(function() {
-                    window.alert('Terima Kasih, daftar pesanan anda sudah kami kirim via chat.');
-                }).catch(function(error) {
-                    window.alert('Error sending message: ' + error);
-                });
+            if(MenuEmpty.NotEmpty){
+                if (MyMenu.makanan > 0 && MyMenu.minuman > 0){
+                    liff.sendMessages([{
+                        'type': 'text',
+                        'text': 
+                        `Terima kasih sudah mengunjungi Resto Indonesia!` + `\n\n` + `Pesanan saudara/i ${getProfileName.getDisplayName} yaitu :`+ `\n` + 
+                        `- ${MyMenu.makanan} makanan`+ `\n` + 
+                        `- ${MyMenu.minuman} minuman`+ `\n\n` + 
+                        `Total pembayaran anda sebesar Rp ${MyMenu.total}.`,
+                    }]).then(function() {
+                        window.alert('Terima Kasih, daftar pesanan anda sudah kami kirim via chat.');
+                    }).catch(function(error) {
+                        window.alert('Error sending message: ' + error);
+                    });
+                }
+                else if(MyMenu.makanan == 0 && MyMenu.minuman > 0){
+                    liff.sendMessages([{
+                        'type': 'text',
+                        'text': 
+                        `Terima kasih sudah mengunjungi Resto Indonesia!` + `\n\n` + `Pesanan saudara/i ${getProfileName.getDisplayName} yaitu :`+ `\n` + 
+                        `- ${MyMenu.minuman} minuman`+ `\n\n` + 
+                        `Total pembayaran anda sebesar Rp ${MyMenu.total}.`,
+                    }]).then(function() {
+                        window.alert('Terima Kasih, daftar pesanan anda sudah kami kirim via chat.');
+                    }).catch(function(error) {
+                        window.alert('Error sending message: ' + error);
+                    });
+                }
+                else if(MyMenu.makanan > 0 && MyMenu.minuman == 0){
+                    liff.sendMessages([{
+                        'type': 'text',
+                        'text': 
+                        `Terima kasih sudah mengunjungi Resto Indonesia!` + `\n\n` + `Pesanan saudara/i ${getProfileName.getDisplayName} yaitu :`+ `\n` + 
+                        `- ${MyMenu.makanan} makanan`+ `\n\n` + 
+                        `Total pembayaran anda sebesar Rp ${MyMenu.total}.`,
+                    }]).then(function() {
+                        window.alert('Terima Kasih, daftar pesanan anda sudah kami kirim via chat.');
+                    }).catch(function(error) {
+                        window.alert('Error sending message: ' + error);
+                    });
+                }
             }
-            else if(MyMenu.makanan == 0 && MyMenu.minuman > 0){
-                liff.sendMessages([{
-                    'type': 'text',
-                    'text': 
-                    `Terima kasih sudah mengunjungi Resto Indonesia!` + `\n\n` + `Pesanan saudara/i ${getProfileName.getDisplayName} yaitu :`+ `\n` + 
-                    `- ${MyMenu.minuman} minuman`+ `\n\n` + 
-                    `Total pembayaran anda sebesar Rp ${MyMenu.total}.`,
-                }]).then(function() {
-                    window.alert('Terima Kasih, daftar pesanan anda sudah kami kirim via chat.');
-                }).catch(function(error) {
-                    window.alert('Error sending message: ' + error);
-                });
-            }
-            else if(MyMenu.makanan > 0 && MyMenu.minuman == 0){
-                liff.sendMessages([{
-                    'type': 'text',
-                    'text': 
-                    `Terima kasih sudah mengunjungi Resto Indonesia!` + `\n\n` + `Pesanan saudara/i ${getProfileName.getDisplayName} yaitu :`+ `\n` + 
-                    `- ${MyMenu.makanan} makanan`+ `\n\n` + 
-                    `Total pembayaran anda sebesar Rp ${MyMenu.total}.`,
-                }]).then(function() {
-                    window.alert('Terima Kasih, daftar pesanan anda sudah kami kirim via chat.');
-                }).catch(function(error) {
-                    window.alert('Error sending message: ' + error);
-                });
-            }
-            else if(MenuEmpty.NotEmpty == true){
+            else if(MenuEmpty.Empty){
                 liff.sendMessages([{
                     'type': 'text',
                     'text': `Terima kasih saudara/i ${getProfileName.getDisplayName} sudah mengunjungi Resto Indonesia!`,

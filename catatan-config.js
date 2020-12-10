@@ -69,7 +69,7 @@ function loadCatatan() {
                     '<td colspan="4"><p>' + 'Belum ada menu yang dipesan' + ' </p></td>'
                 menuApp += '</tr>';
 
-            console.log("empty");
+            MenuEmpty.Empty = true;
         }
  
         $('#list-catatan').html(menuApp);
