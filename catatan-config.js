@@ -1,3 +1,5 @@
+var MyMenu = {}; //Global object
+
 function loadCatatan() {
     if (localStorage.menuList && localStorage.menuId) {
         menuList = JSON.parse(localStorage.getItem('menuList'));
@@ -14,39 +16,39 @@ function loadCatatan() {
                 menuApp += '</tr>';
             }
 
-            var makanan = 0;
-            var minuman = 0;
+            MyMenu.makanan = 0;
+            MyMenu.minuman = 0;
 
             for (j = 0; j < menuList.length; j++){
                 var harga = parseInt(menuList[j].harga);
                 if( harga === 15000 || harga === 10000 ){
-                    makanan = makanan + parseInt(menuList[j].jumlah)
+                    MyMenu.makanan = MyMenu.makanan + parseInt(menuList[j].jumlah)
                 }
 
                 else{
-                    minuman = minuman + parseInt(menuList[j].jumlah)
+                    MyMenu.minuman = MyMenu.minuman + parseInt(menuList[j].jumlah)
                 }
             }
 
-            if(makanan > 0 && minuman > 0){
+            if(MyMenu.makanan > 0 && MyMenu.minuman > 0){
                 menuApp += '<tr>';
                     menuApp +=
                         '<td colspan="2"><p>' + 'Total Pesanan :' + ' </p></td>' +
-                        '<td colspan="2"><p>' + makanan  + ' Makanan ' + 'dan ' +  minuman  + ' Minuman' + '</p></td>';
+                        '<td colspan="2"><p>' + MyMenu.makanan  + ' Makanan ' + 'dan ' +  MyMenu.minuman  + ' Minuman' + '</p></td>';
                     menuApp += '</tr>';
             }
-            else if(makanan == 0 && minuman > 0){
+            else if(MyMenu.makanan == 0 && MyMenu.minuman > 0){
                 menuApp += '<tr>';
                     menuApp +=
                         '<td colspan="2"><p>' + 'Total Pesanan :' + ' </p></td>' +
-                        '<td colspan="2"><p>' +  minuman  + ' Minuman' + '</p></td>';
+                        '<td colspan="2"><p>' +  MyMenu.minuman  + ' Minuman' + '</p></td>';
                     menuApp += '</tr>';
             }
-            else if(makanan > 0 && minuman == 0){
+            else if(MyMenu.makanan > 0 && MyMenu.minuman == 0){
                 menuApp += '<tr>';
                     menuApp +=
                         '<td colspan="2"><p>' + 'Total Pesanan :' + ' </p></td>' +
-                        '<td colspan="2"><p>' + makanan  + ' Makanan' + '</p></td>';
+                        '<td colspan="2"><p>' + MyMenu.makanan  + ' Makanan' + '</p></td>';
                     menuApp += '</tr>';
             }
 

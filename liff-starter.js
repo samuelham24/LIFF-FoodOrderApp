@@ -60,8 +60,11 @@ function initializeLiff(myLiffId) {
         });
 }
 
+var getProfileName = {}; //Global object
+
 function getProfile(){
     liff.getProfile().then(function (profile) {
+        getProfileName.getDisplayName = profile.displayName;
         document.getElementById('displaynamefield').textContent = profile.displayName;
 
         var profilePictureDiv = document.getElementById('profilepicturediv');
@@ -157,10 +160,13 @@ document.getElementById('closeWindowButton').addEventListener('click', function(
     document.getElementById('sendMessageButton').addEventListener('click', function() {
         if (!liff.isInClient()) {
             sendAlertIfNotInClient();
+            console.log(MyMenu.makanan);
+            console.log(getProfileName.getDisplayName);
         } else {
             liff.sendMessages([{
                 'type': 'text',
-                'text': "Terima kasih karena sudah memesan makanan dan minuman"
+                'text': "Terima kasih karena sudah mampir di resto kami",
+                'text': `Pesanan saudara/i ${getProfileName.getDisplayName} yaitu ${MyMenu.makanan} makanan dan ${MyMenu.minuman} minuman.` ,
             }]).then(function() {
                 window.alert('Ini adalah pesan dari fitur Send Message');
             }).catch(function(error) {
