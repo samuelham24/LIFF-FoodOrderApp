@@ -62,20 +62,20 @@ function initializeLiff(myLiffId) {
 
 function getProfile(){
     liff.getProfile().then(function (profile) {
-        // document.getElementById('useridprofilefield').textContent = profile.userId;
-        document.getElementById('displayNameId').textContent = profile.displayName;
+        document.getElementById('useridprofilefield').textContent = profile.userId;
+        document.getElementById('displaynamefield').textContent = profile.displayName;
 
-        // var profilePictureDiv = document.getElementById('profilepicturediv');
-        // if (profilePictureDiv.firstElementChild) {
-        //     profilePictureDiv.removeChild(profilePictureDiv.firstElementChild);
-        // }
-        // var img = document.createElement('img');
-        // img.src = profile.pictureUrl;
-        // img.alt = "Profile Picture";
-        // img.width = 200;
-        // profilePictureDiv.appendChild(img);
+        var profilePictureDiv = document.getElementById('profilepicturediv');
+        if (profilePictureDiv.firstElementChild) {
+            profilePictureDiv.removeChild(profilePictureDiv.firstElementChild);
+        }
+        var img = document.createElement('img');
+        img.src = profile.pictureUrl;
+        img.alt = "Profile Picture";
+        img.width = 200;
+        profilePictureDiv.appendChild(img);
 
-        // document.getElementById('statusmessagefield').textContent = profile.statusMessage;
+        document.getElementById('statusmessagefield').textContent = profile.statusMessage;
     }).catch(function (error) {
         window.alert("Error getting profile: " + error);
     });

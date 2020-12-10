@@ -27,7 +27,26 @@
 <body onload="loadCatatan();">
     <div id="welcomeSectionId" class="welcome-section">
         <div class="welcome-section-text">
-            <h2>Selamat Datang <span id="displayNameId"></span> </h2>
+            <h2>Selamat Datang, <span id="displaynamefield"></span> </h2>
+            <div id="profileinfo">
+                <h2>Profile</h2>
+                <div id="profilepicturediv">
+                </div>
+                <table border="1">
+                    <tr>
+                        <th>userId</th>
+                        <td id="useridprofilefield"></td>
+                    </tr>
+                    <tr>
+                        <th>displayName</th>
+                        <td id="displaynamefield"></td>
+                    </tr>
+                    <tr>
+                        <th>statusMessage</th>
+                        <td id="statusmessagefield"></td>
+                    </tr>
+                </table>
+            </div>
             <h2>di Resto Indonesia</h2>
             <h3>Ingin Pesan Sekarang?</h3>
             <button class="btn btn-success" onclick="pesanSekarang()"><h4>Ya</h4></button>
