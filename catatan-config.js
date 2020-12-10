@@ -53,14 +53,14 @@ function loadCatatan() {
             }
 
 
-            var total = 0;
+            MyMenu.total = 0;
             for (k = 0; k < menuList.length; k++){
-                var total = total + parseInt(menuList[k].harga)*parseInt(menuList[k].jumlah);
+                MyMenu.total = MyMenu.total + parseInt(menuList[k].harga)*parseInt(menuList[k].jumlah);
             }
             menuApp += '<tr>';
                 menuApp +=
                     '<td colspan="2"><p>' + 'Total Harga :' + ' </p></td>' +
-                    '<td colspan="2"><p>' + 'Rp ' + total + ' </p></td>';
+                    '<td colspan="2"><p>' + 'Rp ' + MyMenu.total + ' </p></td>';
                 menuApp += '</tr>';
         }
         else {
