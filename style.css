@@ -82,7 +82,7 @@ p {
 }
 
 .profileCard {
-	width: 25%;
+	width: auto;
 	margin: 5px auto;
 	padding: 5px;
 	border-width: 2px;
