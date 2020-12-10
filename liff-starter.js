@@ -160,27 +160,63 @@ document.getElementById('closeWindowButton').addEventListener('click', function(
     document.getElementById('sendMessageButton').addEventListener('click', function() {
         if (!liff.isInClient()) {
             sendAlertIfNotInClient();
-            console.log(MyMenu.makanan);
-            console.log(getProfileName.getDisplayName);
         } else {
-            liff.sendMessages([{
-                'type': 'text',
-                'text': 
-                `Terima kasih sudah mengunjungi Resto Indonesia!` + `\n\n` + `Pesanan saudara/i <b>${getProfileName.getDisplayName}</b> yaitu :`+ `\n` + 
-                `- <b>${MyMenu.makanan} makanan</b>`+ `\n` + 
-                `- <b>${MyMenu.minuman} minuman</b>`+ `\n\n` + 
-                `Total pembayaran anda sebesar Rp ${MyMenu.total}.`,
-            }]).then(function() {
-                window.alert('Terima Kasih, daftar pesanan anda sudah kami kirim via chat.');
-            }).catch(function(error) {
-                window.alert('Error sending message: ' + error);
-            });
+            if (MyMenu.makanan > 0 && MyMenu.minuman > 0){
+                liff.sendMessages([{
+                    'type': 'text',
+                    'text': 
+                    `Terima kasih sudah mengunjungi Resto Indonesia!` + `\n\n` + `Pesanan saudara/i ${getProfileName.getDisplayName} yaitu :`+ `\n` + 
+                    `- ${MyMenu.makanan} makanan`+ `\n` + 
+                    `- ${MyMenu.minuman} minuman`+ `\n\n` + 
+                    `Total pembayaran anda sebesar Rp ${MyMenu.total}.`,
+                }]).then(function() {
+                    window.alert('Terima Kasih, daftar pesanan anda sudah kami kirim via chat.');
+                }).catch(function(error) {
+                    window.alert('Error sending message: ' + error);
+                });
+            }
+            else if(MyMenu.makanan == 0 && MyMenu.minuman > 0){
+                liff.sendMessages([{
+                    'type': 'text',
+                    'text': 
+                    `Terima kasih sudah mengunjungi Resto Indonesia!` + `\n\n` + `Pesanan saudara/i ${getProfileName.getDisplayName} yaitu :`+ `\n` + 
+                    `- ${MyMenu.minuman} minuman`+ `\n\n` + 
+                    `Total pembayaran anda sebesar Rp ${MyMenu.total}.`,
+                }]).then(function() {
+                    window.alert('Terima Kasih, daftar pesanan anda sudah kami kirim via chat.');
+                }).catch(function(error) {
+                    window.alert('Error sending message: ' + error);
+                });
+            }
+            else if(MyMenu.makanan > 0 && MyMenu.minuman == 0){
+                liff.sendMessages([{
+                    'type': 'text',
+                    'text': 
+                    `Terima kasih sudah mengunjungi Resto Indonesia!` + `\n\n` + `Pesanan saudara/i ${getProfileName.getDisplayName} yaitu :`+ `\n` + 
+                    `- ${MyMenu.makanan} makanan`+ `\n\n` + 
+                    `Total pembayaran anda sebesar Rp ${MyMenu.total}.`,
+                }]).then(function() {
+                    window.alert('Terima Kasih, daftar pesanan anda sudah kami kirim via chat.');
+                }).catch(function(error) {
+                    window.alert('Error sending message: ' + error);
+                });
+            }
+            else if(MyMenu.makanan == 0 && MyMenu.minuman == 0){
+                liff.sendMessages([{
+                    'type': 'text',
+                    'text': `Terima kasih saudara/i ${getProfileName.getDisplayName} sudah mengunjungi Resto Indonesia!`,
+                }]).then(function() {
+                    window.alert('Terima Kasih Atas Kunjungan Anda!');
+                }).catch(function(error) {
+                    window.alert('Error sending message: ' + error);
+                });
+            }
         }
     });
 }
 
 function sendAlertIfNotInClient() {
-    alert('This button is unavailable as LIFF is currently being opened in an external browser.');
+    alert('Maaf, tombol ini tidak tersedia pada external.');
 }
  
 /**
