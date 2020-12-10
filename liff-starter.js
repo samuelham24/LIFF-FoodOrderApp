@@ -51,25 +51,37 @@ function initializeLiff(myLiffId) {
         .then(() => {
             // start to use LIFF's api
             initializeApp();
+            getProfile();
         })
         .catch((err) => {
             document.getElementById("liffAppContent").classList.add('hidden');
             document.getElementById("liffInitErrorMessage").classList.remove('hidden');
             console.log('error', err);
         });
+}
 
-    liff.getProfile()
-        .then(profile => {
-        const name = profile.displayName;
-        document.getElementById('displayNameId').textContent = name;
+function getProfile(){
+    liff.getProfile().then(function (profile) {
+        // document.getElementById('useridprofilefield').textContent = profile.userId;
+        document.getElementById('displayNameId').textContent = profile.displayName;
 
-        })
-        .catch((err) => {
-        console.log('error', err);
-        })
+        // var profilePictureDiv = document.getElementById('profilepicturediv');
+        // if (profilePictureDiv.firstElementChild) {
+        //     profilePictureDiv.removeChild(profilePictureDiv.firstElementChild);
+        // }
+        // var img = document.createElement('img');
+        // img.src = profile.pictureUrl;
+        // img.alt = "Profile Picture";
+        // img.width = 200;
+        // profilePictureDiv.appendChild(img);
 
+        // document.getElementById('statusmessagefield').textContent = profile.statusMessage;
+    }).catch(function (error) {
+        window.alert("Error getting profile: " + error);
+    });
 }
  
+
 /**
  * Initialize the app by calling functions handling individual app components
  */
