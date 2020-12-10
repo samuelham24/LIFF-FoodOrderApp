@@ -1,76 +1,75 @@
 function loadCatatan() {
-    if (localStorage.list_data && localStorage.id_data) {
-        list_data = JSON.parse(localStorage.getItem('list_data'));
-        var data_app = "";
-        if (list_data.length > 0) {
+    if (localStorage.menuList && localStorage.menuId) {
+        menuList = JSON.parse(localStorage.getItem('menuList'));
+        var menuApp = "";
+        if (menuList.length > 0) {
  
-            for (i in list_data) {
-                data_app += '<tr>';
-                data_app +=
-                    '<td><p>' + list_data[i].nama + ' </p></td>' +
-                    '<td><p>' + list_data[i].jumlah + ' </p></td>' +
-                    '<td><p>' + 'Rp ' + list_data[i].harga + ' </p></td>' +
-                    '<td><a class="btn btn-danger btn-small" href="javascript:void(0)" onclick="hapusData(\'' + list_data[i].id_data + '\')">Hapus</a></td>';
-                data_app += '</tr>';
+            for (i in menuList) {
+                menuApp += '<tr>';
+                menuApp +=
+                    '<td><p>' + menuList[i].nama + ' </p></td>' +
+                    '<td><p>' + menuList[i].jumlah + ' </p></td>' +
+                    '<td><p>' + 'Rp ' + menuList[i].harga + ' </p></td>' +
+                    '<td><a class="btn btn-danger btn-small" href="javascript:void(0)" onclick="hapusData(\'' + menuList[i].menuId + '\')">Hapus</a></td>';
+                menuApp += '</tr>';
             }
 
             var makanan = 0;
             var minuman = 0;
 
-            for (j = 0; j < list_data.length; j++){
-                var harga = parseInt(list_data[j].harga);
+            for (j = 0; j < menuList.length; j++){
+                var harga = parseInt(menuList[j].harga);
                 if( harga === 15000 || harga === 10000 ){
-                    makanan = makanan + parseInt(list_data[j].jumlah)
+                    makanan = makanan + parseInt(menuList[j].jumlah)
                 }
 
                 else{
-                    minuman = minuman + parseInt(list_data[j].jumlah)
+                    minuman = minuman + parseInt(menuList[j].jumlah)
                 }
             }
 
             if(makanan > 0 && minuman > 0){
-                data_app += '<tr>';
-                    data_app +=
+                menuApp += '<tr>';
+                    menuApp +=
                         '<td colspan="2"><p>' + 'Total Pesanan :' + ' </p></td>' +
                         '<td colspan="2"><p>' + makanan  + ' Makanan ' + 'dan ' +  minuman  + ' Minuman' + '</p></td>';
-                    data_app += '</tr>';
+                    menuApp += '</tr>';
             }
             else if(makanan == 0 && minuman > 0){
-                data_app += '<tr>';
-                    data_app +=
+                menuApp += '<tr>';
+                    menuApp +=
                         '<td colspan="2"><p>' + 'Total Pesanan :' + ' </p></td>' +
                         '<td colspan="2"><p>' +  minuman  + ' Minuman' + '</p></td>';
-                    data_app += '</tr>';
+                    menuApp += '</tr>';
             }
             else if(makanan > 0 && minuman == 0){
-                data_app += '<tr>';
-                    data_app +=
+                menuApp += '<tr>';
+                    menuApp +=
                         '<td colspan="2"><p>' + 'Total Pesanan :' + ' </p></td>' +
                         '<td colspan="2"><p>' + makanan  + ' Makanan' + '</p></td>';
-                    data_app += '</tr>';
+                    menuApp += '</tr>';
             }
 
 
             var total = 0;
-            for (k = 0; k < list_data.length; k++){
-                var total = total + parseInt(list_data[k].harga)*parseInt(list_data[k].jumlah);
+            for (k = 0; k < menuList.length; k++){
+                var total = total + parseInt(menuList[k].harga)*parseInt(menuList[k].jumlah);
             }
-            data_app += '<tr>';
-                data_app +=
+            menuApp += '<tr>';
+                menuApp +=
                     '<td colspan="2"><p>' + 'Total Harga :' + ' </p></td>' +
                     '<td colspan="2"><p>' + 'Rp ' + total + ' </p></td>';
-                data_app += '</tr>';
+                menuApp += '</tr>';
         }
         else {
-            data_app += '<tr>';
-                data_app +=
+            menuApp += '<tr>';
+                menuApp +=
                     '<td colspan="4"><p>' + 'Belum ada menu yang dipesan' + ' </p></td>'
-                data_app += '</tr>';
+                menuApp += '</tr>';
         }
  
-        $('#list-catatan').html(data_app);
+        $('#list-catatan').html(menuApp);
     }
-    console.log(list_data);
 }
 
 function simpanDataNasgor() {
@@ -84,19 +83,19 @@ function simpanDataNasgor() {
     }
 
     else{
-        if (localStorage.list_data && localStorage.id_data) {
-        list_data = JSON.parse(localStorage.getItem('list_data'));
-        id_data = parseInt(localStorage.getItem('id_data'));
+        if (localStorage.menuList && localStorage.menuId) {
+        menuList = JSON.parse(localStorage.getItem('menuList'));
+        menuId = parseInt(localStorage.getItem('menuId'));
         }
         else {
-            list_data = [];
-            id_data = 0;
+            menuList = [];
+            menuId = 0;
         }
  
-    id_data++;
-    list_data.push({ 'id_data': id_data, 'nama': nama, 'jumlah': jumlah, 'harga': harga });
-    localStorage.setItem('list_data', JSON.stringify(list_data));
-    localStorage.setItem('id_data', id_data);
+    menuId++;
+    menuList.push({ 'menuId': menuId, 'nama': nama, 'jumlah': jumlah, 'harga': harga });
+    window.localStorage.setItem('menuList', JSON.stringify(menuList));
+    window.localStorage.setItem('menuId', menuId);
     document.getElementById("menuNasgorForm").reset();
     loadCatatan();
  
@@ -115,19 +114,19 @@ function simpanDataMie() {
     }
 
     else{
-        if (localStorage.list_data && localStorage.id_data) {
-        list_data = JSON.parse(localStorage.getItem('list_data'));
-        id_data = parseInt(localStorage.getItem('id_data'));
+        if (localStorage.menuList && localStorage.menuId) {
+        menuList = JSON.parse(localStorage.getItem('menuList'));
+        menuId = parseInt(localStorage.getItem('menuId'));
     }
     else {
-        list_data = [];
-        id_data = 0;
+        menuList = [];
+        menuId = 0;
     }
  
-    id_data++;
-    list_data.push({ 'id_data': id_data, 'nama': nama, 'jumlah': jumlah, 'harga': harga });
-    localStorage.setItem('list_data', JSON.stringify(list_data));
-    localStorage.setItem('id_data', id_data);
+    menuId++;
+    menuList.push({ 'menuId': menuId, 'nama': nama, 'jumlah': jumlah, 'harga': harga });
+    window.localStorage.setItem('menuList', JSON.stringify(menuList));
+    window.localStorage.setItem('menuId', menuId);
     document.getElementById("menuMieForm").reset();
     loadCatatan();
  
@@ -146,19 +145,19 @@ function simpanDataJeruk() {
     }
 
     else{
-        if (localStorage.list_data && localStorage.id_data) {
-        list_data = JSON.parse(localStorage.getItem('list_data'));
-        id_data = parseInt(localStorage.getItem('id_data'));
+        if (localStorage.menuList && localStorage.menuId) {
+        menuList = JSON.parse(localStorage.getItem('menuList'));
+        menuId = parseInt(localStorage.getItem('menuId'));
     }
     else {
-        list_data = [];
-        id_data = 0;
+        menuList = [];
+        menuId = 0;
     }
  
-    id_data++;
-    list_data.push({ 'id_data': id_data, 'nama': nama, 'jumlah': jumlah, 'harga': harga });
-    localStorage.setItem('list_data', JSON.stringify(list_data));
-    localStorage.setItem('id_data', id_data);
+    menuId++;
+    menuList.push({ 'menuId': menuId, 'nama': nama, 'jumlah': jumlah, 'harga': harga });
+    window.localStorage.setItem('menuList', JSON.stringify(menuList));
+    window.localStorage.setItem('menuId', menuId);
     document.getElementById("menuJerukForm").reset();
     loadCatatan();
  
@@ -177,19 +176,19 @@ function simpanDataJambu() {
     }
 
     else{
-        if (localStorage.list_data && localStorage.id_data) {
-        list_data = JSON.parse(localStorage.getItem('list_data'));
-        id_data = parseInt(localStorage.getItem('id_data'));
+        if (localStorage.menuList && localStorage.menuId) {
+        menuList = JSON.parse(localStorage.getItem('menuList'));
+        menuId = parseInt(localStorage.getItem('menuId'));
     }
     else {
-        list_data = [];
-        id_data = 0;
+        menuList = [];
+        menuId = 0;
     }
  
-    id_data++;
-    list_data.push({ 'id_data': id_data, 'nama': nama, 'jumlah': jumlah, 'harga': harga });
-    localStorage.setItem('list_data', JSON.stringify(list_data));
-    localStorage.setItem('id_data', id_data);
+    menuId++;
+    menuList.push({ 'menuId': menuId, 'nama': nama, 'jumlah': jumlah, 'harga': harga });
+    window.localStorage.setItem('menuList', JSON.stringify(menuList));
+    window.localStorage.setItem('menuId', menuId);
     document.getElementById("menuJambuForm").reset();
     loadCatatan();
  
@@ -198,17 +197,17 @@ function simpanDataJambu() {
 }
  
 function hapusData(id) {
-    if (localStorage.list_data && localStorage.id_data) {
-        list_data = JSON.parse(localStorage.getItem('list_data'));
+    if (localStorage.menuList && localStorage.menuId) {
+        menuList = JSON.parse(localStorage.getItem('menuList'));
  
         idx_data = 0;
-        for (i in list_data) {
-            if (list_data[i].id_data == id) {
-                list_data.splice(idx_data, 1);
+        for (i in menuList) {
+            if (menuList[i].menuId == id) {
+                menuList.splice(idx_data, 1);
             }
             idx_data++;
         }
-        localStorage.setItem('list_data', JSON.stringify(list_data));
+        window.localStorage.setItem('menuList', JSON.stringify(menuList));
         loadCatatan();
     }
 }
