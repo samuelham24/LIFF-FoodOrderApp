@@ -55,7 +55,19 @@ function initializeLiff(myLiffId) {
         .catch((err) => {
             document.getElementById("liffAppContent").classList.add('hidden');
             document.getElementById("liffInitErrorMessage").classList.remove('hidden');
+            console.log('error', err);
         });
+
+    liff.getProfile()
+        .then(profile => {
+        const name = profile.displayName;
+        document.getElementById('displayNameId').textContent = name;
+
+        })
+        .catch((err) => {
+        console.log('error', err);
+        })
+
 }
  
 /**
