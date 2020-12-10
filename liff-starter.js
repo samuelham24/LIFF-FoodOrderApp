@@ -165,9 +165,13 @@ document.getElementById('closeWindowButton').addEventListener('click', function(
         } else {
             liff.sendMessages([{
                 'type': 'text',
-                'text': `Terima kasih sudah mengunjungi resto kami.` + `\n` + `Pesanan saudara/i ${getProfileName.getDisplayName} yaitu ${MyMenu.makanan} makanan dan ${MyMenu.minuman} minuman.`+ `\n` + `Total pembayaran anda sebesar Rp ${MyMenu.total}.`,
+                'text': 
+                `Terima kasih sudah mengunjungi Resto Indonesia!` + `\n\n` + `Pesanan saudara/i <b>${getProfileName.getDisplayName}</b> yaitu :`+ `\n` + 
+                `- <b>${MyMenu.makanan} makanan</b>`+ `\n` + 
+                `- <b>${MyMenu.minuman} minuman</b>`+ `\n\n` + 
+                `Total pembayaran anda sebesar Rp ${MyMenu.total}.`,
             }]).then(function() {
-                window.alert('Ini adalah pesan dari fitur Send Message');
+                window.alert('Terima Kasih, daftar pesanan anda sudah kami kirim via chat.');
             }).catch(function(error) {
                 window.alert('Error sending message: ' + error);
             });
