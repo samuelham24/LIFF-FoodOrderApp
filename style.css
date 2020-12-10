@@ -153,6 +153,10 @@ p {
 	height: 30px;
 }
 
+.sendMessage {
+	display: none;
+}
+
 .dec-value-hidden {
 	visibility: hidden;
 }

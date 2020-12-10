@@ -201,6 +201,16 @@ document.getElementById('closeWindowButton').addEventListener('click', function(
                     window.alert('Error sending message: ' + error);
                 });
             }
+            else if(MyMenu.makanan == 0 && MyMenu.minuman == 0){
+                liff.sendMessages([{
+                    'type': 'text',
+                    'text': `Terima kasih saudara/i ${getProfileName.getDisplayName} sudah mengunjungi Resto Indonesia!`,
+                }]).then(function() {
+                    window.alert('Terima Kasih, daftar pesanan anda sudah kami kirim via chat.');
+                }).catch(function(error) {
+                    window.alert('Error sending message: ' + error);
+                });
+            }
         }
     });
 }
