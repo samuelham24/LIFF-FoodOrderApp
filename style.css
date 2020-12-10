@@ -82,16 +82,12 @@ p {
 }
 
 .profileCard {
-	width: 50%;
+	width: 25%;
 	margin: 5px auto;
 	padding: 5px;
 	border-width: 2px;
 	border-style: solid;
 	border-color: black;
-	border-radius: 10px;
-}
-
-.profileImg {
 	border-radius: 10px;
 }
 
