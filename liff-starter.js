@@ -62,7 +62,6 @@ function initializeLiff(myLiffId) {
 
 function getProfile(){
     liff.getProfile().then(function (profile) {
-        document.getElementById('useridprofilefield').textContent = profile.userId;
         document.getElementById('displaynamefield').textContent = profile.displayName;
 
         var profilePictureDiv = document.getElementById('profilepicturediv');
@@ -72,10 +71,8 @@ function getProfile(){
         var img = document.createElement('img');
         img.src = profile.pictureUrl;
         img.alt = "Profile Picture";
-        img.width = 200;
+        img.width = 300;
         profilePictureDiv.appendChild(img);
-
-        document.getElementById('statusmessagefield').textContent = profile.statusMessage;
     }).catch(function (error) {
         window.alert("Error getting profile: " + error);
     });
