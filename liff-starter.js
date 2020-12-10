@@ -110,19 +110,11 @@ function displayIsInClientInfo() {
 function registerButtonHandlers() {
     document.getElementById('openWindowButton').addEventListener('click', function() {
         liff.openWindow({
-            url: 'https://liff-exercise.herokuapp.com/', // Isi dengan Endpoint URL aplikasi web Anda
+            url: 'https://liff-orderfoodapp.herokuapp.com/', // Isi dengan Endpoint URL aplikasi web Anda
             external: true
         });
     });
 }
-
-function registerButtonHandlers() {
-    document.getElementById('openWindowButton').addEventListener('click', function() {
-        liff.openWindow({
-            url: 'https://liff-exercise.herokuapp.com/', // Isi dengan Endpoint URL aplikasi web Anda
-            external: true
-        });
-    });
  
 document.getElementById('closeWindowButton').addEventListener('click', function() {
         if (!liff.isInClient()) {
