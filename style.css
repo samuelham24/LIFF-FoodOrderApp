@@ -81,16 +81,6 @@ p {
 	padding: 10px;
 }
 
-.profileCard {
-	width: auto;
-	margin: 5px auto;
-	padding: 5px;
-	border-width: 2px;
-	border-style: solid;
-	border-color: black;
-	border-radius: 10px;
-}
-
 .food-section-container {
 	justify-content: center;
 	align-items: center;
