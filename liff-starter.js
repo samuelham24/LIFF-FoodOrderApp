@@ -160,8 +160,7 @@ document.getElementById('closeWindowButton').addEventListener('click', function(
         } else {
             liff.sendMessages([{
                 'type': 'text',
-                'text': 
-                    'Terima kasih, saudara/i ' + profile.displayName + ' telah memesan ' + makanan + ' Makanan dan ' + minuman + ' Minuman'
+                'text': "Terima kasih karena sudah memesan makanan dan minuman"
             }]).then(function() {
                 window.alert('Ini adalah pesan dari fitur Send Message');
             }).catch(function(error) {
