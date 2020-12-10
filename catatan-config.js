@@ -6,7 +6,7 @@ function loadCatatan() {
         menuList = JSON.parse(localStorage.getItem('menuList'));
         var menuApp = "";
         if (menuList.length > 0) {
- 
+            MenuEmpty.NotEmpty = true;
             for (i in menuList) {
                 menuApp += '<tr>';
                 menuApp +=
@@ -53,7 +53,6 @@ function loadCatatan() {
                     menuApp += '</tr>';
             }
 
-
             MyMenu.total = 0;
             for (k = 0; k < menuList.length; k++){
                 MyMenu.total = MyMenu.total + parseInt(menuList[k].harga)*parseInt(menuList[k].jumlah);
@@ -61,16 +60,16 @@ function loadCatatan() {
             menuApp += '<tr>';
                 menuApp +=
                     '<td colspan="2"><p>' + 'Total Harga :' + ' </p></td>' +
-                    '<td colspan="1"><p>' + 'Rp ' + MyMenu.total + ' </p></td>'+
-                    '<td><button id="sendMessageButton" class="btn btn-success btn-small">Pesan</button></td>';
+                    '<td colspan="2"><p>' + 'Rp ' + MyMenu.total + ' </p></td>';
                 menuApp += '</tr>';
         }
         else {
-            MenuEmpty = true;
             menuApp += '<tr>';
                 menuApp +=
                     '<td colspan="4"><p>' + 'Belum ada menu yang dipesan' + ' </p></td>'
                 menuApp += '</tr>';
+
+            console.log("empty");
         }
  
         $('#list-catatan').html(menuApp);

@@ -157,7 +157,7 @@ document.getElementById('closeWindowButton').addEventListener('click', function(
         }
     });
 
-    document.getElementById('sendMessageButton').addEventListener('click', function() {
+    document.getElementById('sendMessageButton').addEventListener('click', function () {
         if (!liff.isInClient()) {
             sendAlertIfNotInClient();
         } else {
@@ -201,7 +201,7 @@ document.getElementById('closeWindowButton').addEventListener('click', function(
                     window.alert('Error sending message: ' + error);
                 });
             }
-            else if(MyMenu.makanan == 0 && MyMenu.minuman == 0){
+            else if(MenuEmpty.NotEmpty == true){
                 liff.sendMessages([{
                     'type': 'text',
                     'text': `Terima kasih saudara/i ${getProfileName.getDisplayName} sudah mengunjungi Resto Indonesia!`,
