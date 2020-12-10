@@ -208,7 +208,7 @@ document.getElementById('closeWindowButton').addEventListener('click', function(
                     'type': 'text',
                     'text': `Terima kasih saudara/i ${getProfileName.getDisplayName} sudah mengunjungi Resto Indonesia!`,
                 }]).then(function() {
-                    window.alert('Terima Kasih, daftar pesanan anda sudah kami kirim via chat.');
+                    window.alert(`Terima kasih saudara/i ${getProfileName.getDisplayName} sudah mengunjungi Resto Indonesia!`);
                 }).catch(function(error) {
                     window.alert('Error sending message: ' + error);
                 });
