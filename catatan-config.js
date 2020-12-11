@@ -60,7 +60,8 @@ function loadCatatan() {
             menuApp += '<tr>';
                 menuApp +=
                     '<td colspan="2"><p>' + 'Total Harga :' + ' </p></td>' +
-                    '<td colspan="2"><p>' + 'Rp ' + MyMenu.total + ' </p></td>';
+                    '<td><p>' + 'Rp ' + MyMenu.total + ' </p></td>'+
+                    '<td><button onclick="orderSendMessage()"  class="btn btn-success btn-small ">Pesan</button></td>';
                 menuApp += '</tr>';
         }
         else {

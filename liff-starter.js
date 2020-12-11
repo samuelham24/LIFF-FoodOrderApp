@@ -162,6 +162,25 @@ document.getElementById('closeWindowButton').addEventListener('click', function(
             sendAlertIfNotInClient();
         } else {
             if(MenuEmpty.NotEmpty){
+                    liff.sendMessages([{
+                        'type': 'text',
+                        'text': 
+                        `Terima kasih sudah mengunjungi Resto Indonesia!`,
+                    }]).then(function() {
+                        window.alert('Terima kasih sudah mengunjungi Resto Indonesia!');
+                    }).catch(function(error) {
+                        window.alert('Error sending message: ' + error);
+                    });
+            }
+        }
+    });
+}
+
+function orderSendMessage() {
+        if (!liff.isInClient()) {
+            sendAlertIfNotInClient();
+        } else {
+            if(MenuEmpty.NotEmpty){
                 if (MyMenu.makanan > 0 && MyMenu.minuman > 0){
                     liff.sendMessages([{
                         'type': 'text',
@@ -214,8 +233,7 @@ document.getElementById('closeWindowButton').addEventListener('click', function(
                 });
             }
         }
-    });
-}
+    };
 
 function sendAlertIfNotInClient() {
     alert('Maaf, tombol ini tidak tersedia pada external.');
