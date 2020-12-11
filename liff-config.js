@@ -169,7 +169,6 @@ function orderSendMessage() {
         if (!liff.isInClient()) {
             sendAlertIfNotInClient();
         } else {
-            if(MenuEmpty.NotEmpty){
                 if (MyMenu.makanan > 0 && MyMenu.minuman > 0){
                     liff.sendMessages([{
                         'type': 'text',
@@ -210,17 +209,6 @@ function orderSendMessage() {
                         window.alert('Error sending message: ' + error);
                     });
                 }
-            }
-            else if(MenuEmpty.Empty){
-                liff.sendMessages([{
-                    'type': 'text',
-                    'text': `Terima kasih saudara/i ${getProfileName.getDisplayName} sudah mengunjungi Resto Indonesia!`,
-                }]).then(function() {
-                    window.alert(`Terima kasih saudara/i ${getProfileName.getDisplayName} sudah mengunjungi Resto Indonesia!`);
-                }).catch(function(error) {
-                    window.alert('Error sending message: ' + error);
-                });
-            }
         }
     };
 
