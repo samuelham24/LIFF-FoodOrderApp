@@ -24,7 +24,7 @@
     </style>
 </head>
  
-<body onload="loadCatatan();">
+<body onload="loadOrder();">
     <div id="welcomeSectionId" class="welcome-section">
         <div class="welcome-section-text">
             <h2>Selamat Datang,</h2>
@@ -37,14 +37,11 @@
             <button class="btn btn-success" onclick="pesanSekarang()">
                 <h4>Ya</h4>
             </button>
-            <button class="btn btn-danger" onclick="tidakPesan()">
-                <h4>Tidak</h4>
-            </button>
         </div>
     </div>
     <!-- Food Card Menus -->
     <div id="menu-container" class="food-section-container">
-        <h2>Food</h2>
+        <h2>Makanan</h2>
         <div class="menu-container-food">
             <div class="card" style="width: 18rem;">
                 <div class="card-nasgor-img"></div>
@@ -109,7 +106,7 @@
             </div>
         </div><br>
 
-        <h2>Beverage</h2>
+        <h2>Minuman</h2>
         <div class="menu-container-food">
             <div class="card" style="width: 18rem;">
                 <div class="card-jeruk-img"></div>
@@ -168,7 +165,7 @@
 
 
         <div class="purchase-section-titile">
-            <h3>Purchase Summary</h3>
+            <h3>Ringkasan Pembelian</h3>
         </div>
         <div class="purchase-section row justify-content-center">
             <div class="col-auto">
@@ -186,6 +183,11 @@
         </div>
 
         <div id="liffAppContent">
+            <!-- LOGIN LOGOUT BUTTONS -->
+            <div class="buttonGroup">
+                <button id="liffLoginButton" class="btn btn-success btn-small">Log in</button>
+                <button id="liffLogoutButton" class="btn btn-danger btn-small">Log out</button>
+            </div>
             <!-- ACTION BUTTONS -->
             <div class="buttonGroup">
                 <div class="buttonRow">
@@ -196,7 +198,7 @@
             </div>
         
             <!-- LIFF DATA -->
-            <div id="liffData">
+            <div class="liffDataClass" id="liffData">
                 <h3 id="liffDataHeader" class="textLeft">Informasi:</h3>
                 <table>
                     <tr>
@@ -204,16 +206,12 @@
                         <td id="isInClient" class="textLeft"></td>
                     </tr>
                     <tr>
-                        <th>isLoggedIn : </th>
+                        <th>Status User Login : </th>
                         <td id="isLoggedIn" class="textLeft"></td>
                     </tr>
                 </table>
             </div>
-            <!-- LOGIN LOGOUT BUTTONS -->
-            <div class="buttonGroup">
-                <button id="liffLoginButton" class="btn btn-success btn-small">Log in</button>
-                <button id="liffLogoutButton" class="btn btn-warning btn-small">Log out</button>
-            </div>
+            
             <div id="statusMessage">
                 <div id="isInClientMessage"></div>
             </div>
@@ -225,8 +223,8 @@
         
     
 </body>
-<script src="catatan-config.js"></script>
 <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
-<script src="liff-starter.js"></script>
+<script src="config.js"></script>
+<script src="liff-config.js"></script>
  
 </html>

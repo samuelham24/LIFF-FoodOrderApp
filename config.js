@@ -1,12 +1,10 @@
 var MyMenu = {}; //Global object
-var MenuEmpty = {};
 
-function loadCatatan() {
+function loadOrder() {
     if (localStorage.menuList && localStorage.menuId) {
         menuList = JSON.parse(localStorage.getItem('menuList'));
         var menuApp = "";
         if (menuList.length > 0) {
-            MenuEmpty.NotEmpty = true;
             for (i in menuList) {
                 menuApp += '<tr>';
                 menuApp +=
@@ -69,8 +67,6 @@ function loadCatatan() {
                 menuApp +=
                     '<td colspan="4"><p>' + 'Belum ada menu yang dipesan' + ' </p></td>'
                 menuApp += '</tr>';
-
-            MenuEmpty.Empty = true;
         }
  
         $('#list-catatan').html(menuApp);
@@ -78,7 +74,6 @@ function loadCatatan() {
 }
 
 function simpanDataNasgor() {
- 
     nama = $('#menuNasgorId').val();
     jumlah = $('#jumlahNasgorId').val();
     harga = $('#hargaNasgorId').val();
@@ -89,8 +84,8 @@ function simpanDataNasgor() {
 
     else{
         if (localStorage.menuList && localStorage.menuId) {
-        menuList = JSON.parse(localStorage.getItem('menuList'));
-        menuId = parseInt(localStorage.getItem('menuId'));
+            menuList = JSON.parse(localStorage.getItem('menuList'));
+            menuId = parseInt(localStorage.getItem('menuId'));
         }
         else {
             menuList = [];
@@ -101,15 +96,13 @@ function simpanDataNasgor() {
     menuList.push({ 'menuId': menuId, 'nama': nama, 'jumlah': jumlah, 'harga': harga });
     window.localStorage.setItem('menuList', JSON.stringify(menuList));
     window.localStorage.setItem('menuId', menuId);
-    document.getElementById("menuNasgorForm").reset();
-    loadCatatan();
+    loadOrder();
  
     return false;
     }
 }
 
 function simpanDataMie() {
- 
     nama = $('#menuMieId').val();
     jumlah = $('#jumlahMieId').val();
     harga = $('#hargaMieId').val();
@@ -132,15 +125,13 @@ function simpanDataMie() {
     menuList.push({ 'menuId': menuId, 'nama': nama, 'jumlah': jumlah, 'harga': harga });
     window.localStorage.setItem('menuList', JSON.stringify(menuList));
     window.localStorage.setItem('menuId', menuId);
-    document.getElementById("menuMieForm").reset();
-    loadCatatan();
+    loadOrder();
  
     return false;
     }
 }
 
 function simpanDataJeruk() {
- 
     nama = $('#menuJerukId').val();
     jumlah = $('#jumlahJerukId').val();
     harga = $('#hargaJerukId').val();
@@ -163,15 +154,13 @@ function simpanDataJeruk() {
     menuList.push({ 'menuId': menuId, 'nama': nama, 'jumlah': jumlah, 'harga': harga });
     window.localStorage.setItem('menuList', JSON.stringify(menuList));
     window.localStorage.setItem('menuId', menuId);
-    document.getElementById("menuJerukForm").reset();
-    loadCatatan();
+    loadOrder();
  
     return false;
     }
 }
 
 function simpanDataJambu() {
- 
     nama = $('#menuJambuId').val();
     jumlah = $('#jumlahJambuId').val();
     harga = $('#hargaJambuId').val();
@@ -194,8 +183,7 @@ function simpanDataJambu() {
     menuList.push({ 'menuId': menuId, 'nama': nama, 'jumlah': jumlah, 'harga': harga });
     window.localStorage.setItem('menuList', JSON.stringify(menuList));
     window.localStorage.setItem('menuId', menuId);
-    document.getElementById("menuJambuForm").reset();
-    loadCatatan();
+    loadOrder();
  
     return false;
     }
@@ -213,18 +201,14 @@ function hapusData(id) {
             idx_data++;
         }
         window.localStorage.setItem('menuList', JSON.stringify(menuList));
-        loadCatatan();
+        loadOrder();
     }
 }
 
 function pesanSekarang(){
-    loadCatatan();
+    loadOrder();
     $("#menu-container").fadeIn();
     $("#welcomeSectionId").fadeOut();
-}
-
-function tidakPesan(){
-        window.close();
 }
 
 var nasgor = 0;

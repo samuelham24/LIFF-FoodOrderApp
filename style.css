@@ -26,18 +26,6 @@ button {
 	margin: 4px;
 }
 
-#code-block {
-	background-color: #eee;
-	border: 1px solid #999;
-	display: block;
-	padding: 20px;
-	width: 50%;
-	margin-left: auto;
-	margin-right: auto;
-	overflow-x: auto;
-	white-space: nowrap;
-}
-
 #statusMessage {
 	position: relative;
 	top: 40px;
@@ -153,7 +141,7 @@ p {
 	height: 30px;
 }
 
-.sendMessage {
+#sendMessageButton {
 	display: none;
 }
 
@@ -169,11 +157,26 @@ p {
 .food-section-container {
 	display: none;
 }
+.liffDataClass {
+	display: none;
+}
 
 th {
 	padding: 20px !important;
 }
 
 .purchase-section-titile {
-	margin-top: 30px;
+	margin-top: 35px;
+}
+.purchase-section {
+	margin-top: 5px;
+	padding-left: 22px;
+}
+
+.liffAppContent {
+	display: block;
+}
+
+.buttonRow {
+	display: block;
 }
