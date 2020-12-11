@@ -224,11 +224,7 @@ function pesanSekarang(){
 }
 
 function tidakPesan(){
-    if (!liff.isInClient()) {
-        window.close();;
-    } else {
-        liff.closeWindow();
-    }
+        window.close();
 }
 
 var nasgor = 0;
