@@ -223,6 +223,14 @@ function pesanSekarang(){
     $("#welcomeSectionId").fadeOut();
 }
 
+function tidakPesan(){
+    if (!liff.isInClient()) {
+        window.close();;
+    } else {
+        liff.closeWindow();
+    }
+}
+
 var nasgor = 0;
 var mie = 0;
 var jeruk = 0;
