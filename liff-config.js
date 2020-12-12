@@ -54,45 +54,34 @@ function getProfile(){
     if (!liff.isInClient()) {
         if (liff.isLoggedIn()) {
             document.getElementById('loginSuccesFieldId').textContent = 'Log in Berhasil!';
-            liff.getProfile().then(function (profile) {
-                getProfileName.getDisplayName = profile.displayName;
-                document.getElementById('displaynamefield').textContent = profile.displayName;
-        
-                var profilePictureDiv = document.getElementById('profilepicturediv');
-                if (profilePictureDiv.firstElementChild) {
-                    profilePictureDiv.removeChild(profilePictureDiv.firstElementChild);
-                }
-                var img = document.createElement('img');
-                img.src = profile.pictureUrl;
-                img.alt = "Profile Picture";
-                img.width = 300;
-                profilePictureDiv.appendChild(img);
-            }).catch(function (error) {
-                window.alert("Error getting profile: " + error);
-            });
+            getProfileData();
         } else {
             document.getElementById("lanjutButtonId").style.display = "none";
         }
-    } else {
+    } else if(liff.isInClient()){
+        getProfileData();
         document.getElementById("loginSectionId").style.display = "none";
         loginSekarang();
-        liff.getProfile().then(function (profile) {
-                getProfileName.getDisplayName = profile.displayName;
-                document.getElementById('displaynamefield').textContent = profile.displayName;
         
-                var profilePictureDiv = document.getElementById('profilepicturediv');
-                if (profilePictureDiv.firstElementChild) {
-                    profilePictureDiv.removeChild(profilePictureDiv.firstElementChild);
-                }
-                var img = document.createElement('img');
-                img.src = profile.pictureUrl;
-                img.alt = "Profile Picture";
-                img.width = 300;
-                profilePictureDiv.appendChild(img);
-            }).catch(function (error) {
-                window.alert("Error getting profile: " + error);
-            });
     }
+}
+
+function getProfileData(){
+    liff.getProfile().then(function (profile) {
+        getProfileName.getDisplayName = profile.displayName;
+        document.getElementById('displaynamefield').textContent = profile.displayName;
+        var profilePictureDiv = document.getElementById('profilepicturediv');
+            if (profilePictureDiv.firstElementChild) {
+                profilePictureDiv.removeChild(profilePictureDiv.firstElementChild);
+            }
+        var img = document.createElement('img');
+        img.src = profile.pictureUrl;
+        img.alt = "Profile Picture";
+        img.width = 300;
+        profilePictureDiv.appendChild(img);
+        }).catch(function (error) {
+            window.alert("Error getting profile: " + error);
+        });
 }
  
 
