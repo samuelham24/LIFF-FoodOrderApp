@@ -53,8 +53,8 @@ var getProfileName = {}; //Global object
 
 function getProfile(){
     if (liff.isLoggedIn()) {
+        document.getElementById("loginSectionTextId").classList.add('hidden');
         liff.getProfile().then(function (profile) {
-            document.getElementById("loginSectionTextId").classList.add('hidden');
             getProfileName.getDisplayName = profile.displayName;
             document.getElementById('displaynamefield').textContent = profile.displayName;
     
