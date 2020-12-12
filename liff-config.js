@@ -15,7 +15,6 @@ window.onload = () => {
             })
             .catch((error) =>  {
                 document.getElementById("contentLiffId").classList.add('hidden');
-                document.getElementById("nodeLiffIdErrorMessage").classList.remove('hidden');
             });
     } else {
         IdLiff = IdLiffDefault;
@@ -26,7 +25,6 @@ window.onload = () => {
 function initializeLiffOrDie(IdLiff) {
     if (!IdLiff) {
         document.getElementById("contentLiffId").classList.add('hidden');
-        document.getElementById("liffIdErrorMessage").classList.remove('hidden');
     } else {
         initializeLiff(IdLiff);
     }
