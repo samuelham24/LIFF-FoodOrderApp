@@ -51,26 +51,31 @@ function initializeLiff(myLiffId) {
 var getProfileName = {}; //Global object
 
 function getProfile(){
-    if (liff.isLoggedIn()) {
-        document.getElementById('loginSuccesFieldId').textContent = 'Log in Berhasil!';
-        liff.getProfile().then(function (profile) {
-            getProfileName.getDisplayName = profile.displayName;
-            document.getElementById('displaynamefield').textContent = profile.displayName;
-    
-            var profilePictureDiv = document.getElementById('profilepicturediv');
-            if (profilePictureDiv.firstElementChild) {
-                profilePictureDiv.removeChild(profilePictureDiv.firstElementChild);
-            }
-            var img = document.createElement('img');
-            img.src = profile.pictureUrl;
-            img.alt = "Profile Picture";
-            img.width = 300;
-            profilePictureDiv.appendChild(img);
-        }).catch(function (error) {
-            window.alert("Error getting profile: " + error);
-        });
+    if (!liff.isInClient()) {
+        if (liff.isLoggedIn()) {
+            document.getElementById('loginSuccesFieldId').textContent = 'Log in Berhasil!';
+            liff.getProfile().then(function (profile) {
+                getProfileName.getDisplayName = profile.displayName;
+                document.getElementById('displaynamefield').textContent = profile.displayName;
+        
+                var profilePictureDiv = document.getElementById('profilepicturediv');
+                if (profilePictureDiv.firstElementChild) {
+                    profilePictureDiv.removeChild(profilePictureDiv.firstElementChild);
+                }
+                var img = document.createElement('img');
+                img.src = profile.pictureUrl;
+                img.alt = "Profile Picture";
+                img.width = 300;
+                profilePictureDiv.appendChild(img);
+            }).catch(function (error) {
+                window.alert("Error getting profile: " + error);
+            });
+        } else {
+            document.getElementById("lanjutButtonId").style.display = "none";
+        }
     } else {
-        document.getElementById("lanjutButtonId").style.display = "none";
+        document.getElementById("loginSectionId").style.display = "none";
+        loginSekarang();
     }
 }
  
