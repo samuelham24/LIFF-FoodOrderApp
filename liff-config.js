@@ -71,7 +71,7 @@ function getProfile(){
         });
     } else {
         document.getElementById('loginSuccesFieldId').textContent = 'Anda Belum Login';
-        document.getElementById('liffLogoutButton').disabled = true;
+        document.getElementById('lanjutButtonId').disabled = true;
     }
 }
  
