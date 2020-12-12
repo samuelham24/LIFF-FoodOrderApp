@@ -52,6 +52,7 @@ var getProfileName = {}; //Global object
 
 function getProfile(){
     if (!liff.isInClient()) {
+        document.getElementById("loginSectionId").style.display = "block";
         if (liff.isLoggedIn()) {
             document.getElementById('loginSuccesFieldId').textContent = 'Log in Berhasil!';
             getProfileData();
@@ -60,9 +61,6 @@ function getProfile(){
         }
     } else if(liff.isInClient()){
         getProfileData();
-        document.getElementById("loginSectionId").style.display = "none";
-        loginSekarang();
-        
     }
 }
 
