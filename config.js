@@ -205,6 +205,11 @@ function hapusData(id) {
     }
 }
 
+function loginSekarang() {
+    $("#welcomeSectionId").fadeIn();
+    $("#loginSectionId").fadeOut();
+}
+
 function pesanSekarang(){
     loadOrder();
     $("#menu-container").fadeIn();
