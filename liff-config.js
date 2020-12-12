@@ -60,9 +60,9 @@ function getProfile(){
             document.getElementById("lanjutButtonId").style.display = "none";
         }
     } else if(liff.isInClient()){
-        if (liff.isLoggedIn()) {
-            getProfileData();
-        }
+        getProfileData();
+        document.getElementById("welcomeSectionId").style.display = "block";
+
     }
 }
 
