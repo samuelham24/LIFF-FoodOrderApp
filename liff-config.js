@@ -54,6 +54,7 @@ var getProfileName = {}; //Global object
 function getProfile(){
     if (liff.isLoggedIn()) {
         liff.getProfile().then(function (profile) {
+            document.getElementById("loginSectionTextId").classList.add('hidden');
             getProfileName.getDisplayName = profile.displayName;
             document.getElementById('displaynamefield').textContent = profile.displayName;
     
@@ -70,7 +71,7 @@ function getProfile(){
             window.alert("Error getting profile: " + error);
         });
     } else {
-        document.getElementById('displaynamefield').textContent = 'Login Dahulu'
+        document.getElementById("welcomeSectionTextId").classList.add('hidden');
     }
 }
  

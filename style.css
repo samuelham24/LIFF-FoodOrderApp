@@ -50,20 +50,6 @@ p {
 	text-align: center;
 }
 
-.login-section-hidden {
-	display: none;
-}
-
-.login-section-show {
-	height: 100vh;
-	background-image: url('img/restaurant-comp.jpg');
-	background-size: cover;
-	background-position: center;
-	justify-items: center;
-	padding: 10px;
-	padding-top: 30vh;
-}
-
 .welcome-section {
 	height: 100vh;
 	background-image: url('img/restaurant-comp.jpg');
@@ -72,9 +58,9 @@ p {
 	justify-items: center;
 	padding: 10px;
 	padding-top: 30vh;
-	display: none;
 }
 
+.login-section-text,
 .welcome-section-text {
 	background-color: white;
 	border-radius: 10px;
