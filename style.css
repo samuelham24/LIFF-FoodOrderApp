@@ -50,7 +50,11 @@ p {
 	text-align: center;
 }
 
-.welcome-section {
+.login-section-hidden {
+	display: none;
+}
+
+.login-section-show {
 	height: 100vh;
 	background-image: url('img/restaurant-comp.jpg');
 	background-size: cover;
@@ -60,7 +64,26 @@ p {
 	padding-top: 30vh;
 }
 
-.login-section-text,
+.welcome-section {
+	height: 100vh;
+	background-image: url('img/restaurant-comp.jpg');
+	background-size: cover;
+	background-position: center;
+	justify-items: center;
+	padding: 10px;
+	padding-top: 30vh;
+	display: none;
+}
+
+.login-section-text {
+	background-color: white;
+	border-radius: 10px;
+	opacity: 0.95;
+	width: 500px;
+	margin: auto;
+	padding: 10px;
+}
+
 .welcome-section-text {
 	background-color: white;
 	border-radius: 10px;
@@ -75,7 +98,6 @@ p {
 	align-items: center;
 	margin-left: 20px;
 	margin-top: 20px;
-	display: none;
 }
 
 .menu-container-food {

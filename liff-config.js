@@ -53,7 +53,7 @@ var getProfileName = {}; //Global object
 
 function getProfile(){
     if (liff.isLoggedIn()) {
-        document.getElementById("loginSectionTextId").classList.add('hidden');
+        document.getElementById('loginSuccesFieldId').textContent = 'Login Berhasil';
         liff.getProfile().then(function (profile) {
             getProfileName.getDisplayName = profile.displayName;
             document.getElementById('displaynamefield').textContent = profile.displayName;
@@ -71,7 +71,8 @@ function getProfile(){
             window.alert("Error getting profile: " + error);
         });
     } else {
-        document.getElementById("welcomeSectionTextId").classList.add('hidden');
+        document.getElementById('loginSuccesFieldId').textContent = 'Anda Belum Login';
+        document.getElementById('liffLogoutButton').disabled = true;
     }
 }
  
