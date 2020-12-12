@@ -1,78 +1,3 @@
-var MyMenu = {}; //Global object
-
-function loadOrder() {
-    if (localStorage.menuList && localStorage.menuId) {
-        menuList = JSON.parse(localStorage.getItem('menuList'));
-        var menuApp = "";
-        if (menuList.length > 0) {
-            for (i in menuList) {
-                menuApp += '<tr>';
-                menuApp +=
-                    '<td><p>' + menuList[i].nama + ' </p></td>' +
-                    '<td><p>' + menuList[i].jumlah + ' </p></td>' +
-                    '<td><p>' + 'Rp ' + menuList[i].harga + ' </p></td>' +
-                    '<td><a class="btn btn-danger btn-small" href="javascript:void(0)" onclick="hapusData(\'' + menuList[i].menuId + '\')">Hapus</a></td>';
-                menuApp += '</tr>';
-            }
-
-            MyMenu.makanan = 0;
-            MyMenu.minuman = 0;
-
-            for (j = 0; j < menuList.length; j++){
-                var harga = parseInt(menuList[j].harga);
-                if( harga === 15000 || harga === 10000 ){
-                    MyMenu.makanan = MyMenu.makanan + parseInt(menuList[j].jumlah)
-                }
-
-                else{
-                    MyMenu.minuman = MyMenu.minuman + parseInt(menuList[j].jumlah)
-                }
-            }
-
-            if(MyMenu.makanan > 0 && MyMenu.minuman > 0){
-                menuApp += '<tr>';
-                    menuApp +=
-                        '<td colspan="2"><p>' + 'Total Pesanan :' + ' </p></td>' +
-                        '<td colspan="2"><p>' + MyMenu.makanan  + ' Makanan ' + 'dan ' +  MyMenu.minuman  + ' Minuman' + '</p></td>';
-                    menuApp += '</tr>';
-            }
-            else if(MyMenu.makanan == 0 && MyMenu.minuman > 0){
-                menuApp += '<tr>';
-                    menuApp +=
-                        '<td colspan="2"><p>' + 'Total Pesanan :' + ' </p></td>' +
-                        '<td colspan="2"><p>' +  MyMenu.minuman  + ' Minuman' + '</p></td>';
-                    menuApp += '</tr>';
-            }
-            else if(MyMenu.makanan > 0 && MyMenu.minuman == 0){
-                menuApp += '<tr>';
-                    menuApp +=
-                        '<td colspan="2"><p>' + 'Total Pesanan :' + ' </p></td>' +
-                        '<td colspan="2"><p>' + MyMenu.makanan  + ' Makanan' + '</p></td>';
-                    menuApp += '</tr>';
-            }
-
-            MyMenu.total = 0;
-            for (k = 0; k < menuList.length; k++){
-                MyMenu.total = MyMenu.total + parseInt(menuList[k].harga)*parseInt(menuList[k].jumlah);
-            }
-            menuApp += '<tr>';
-                menuApp +=
-                    '<td colspan="2"><p>' + 'Total Harga :' + ' </p></td>' +
-                    '<td><p>' + 'Rp ' + MyMenu.total + ' </p></td>'+
-                    '<td><button onclick="orderSendMessage()"  class="btn btn-success btn-small ">Pesan</button></td>';
-                menuApp += '</tr>';
-        }
-        else {
-            menuApp += '<tr>';
-                menuApp +=
-                    '<td colspan="4"><p>' + 'Belum ada menu yang dipesan' + ' </p></td>'
-                menuApp += '</tr>';
-        }
- 
-        $('#orderMenuId').html(menuApp);
-    }
-}
-
 function simpanDataNasgor() {
     nama = $('#menuNasgorId').val();
     jumlah = $('#jumlahNasgorId').val();
@@ -282,3 +207,78 @@ var jambu = 0;
           document.getElementById('jumlahJambuId').value = jambu;
       }
     }
+
+var MyMenu = {}; //Global object
+
+function loadOrder() {
+    if (localStorage.menuList && localStorage.menuId) {
+        menuList = JSON.parse(localStorage.getItem('menuList'));
+        var menuApp = "";
+        if (menuList.length > 0) {
+            for (i in menuList) {
+                menuApp += '<tr>';
+                menuApp +=
+                    '<td><p>' + menuList[i].nama + ' </p></td>' +
+                    '<td><p>' + menuList[i].jumlah + ' </p></td>' +
+                    '<td><p>' + 'Rp ' + menuList[i].harga + ' </p></td>' +
+                    '<td><a class="btn btn-danger btn-small" href="javascript:void(0)" onclick="hapusData(\'' + menuList[i].menuId + '\')">Hapus</a></td>';
+                menuApp += '</tr>';
+            }
+
+            MyMenu.makanan = 0;
+            MyMenu.minuman = 0;
+
+            for (j = 0; j < menuList.length; j++){
+                var harga = parseInt(menuList[j].harga);
+                if( harga === 15000 || harga === 10000 ){
+                    MyMenu.makanan = MyMenu.makanan + parseInt(menuList[j].jumlah)
+                }
+
+                else{
+                    MyMenu.minuman = MyMenu.minuman + parseInt(menuList[j].jumlah)
+                }
+            }
+
+            if(MyMenu.makanan > 0 && MyMenu.minuman > 0){
+                menuApp += '<tr>';
+                    menuApp +=
+                        '<td colspan="2"><p>' + 'Total Pesanan :' + ' </p></td>' +
+                        '<td colspan="2"><p>' + MyMenu.makanan  + ' Makanan ' + 'dan ' +  MyMenu.minuman  + ' Minuman' + '</p></td>';
+                    menuApp += '</tr>';
+            }
+            else if(MyMenu.makanan == 0 && MyMenu.minuman > 0){
+                menuApp += '<tr>';
+                    menuApp +=
+                        '<td colspan="2"><p>' + 'Total Pesanan :' + ' </p></td>' +
+                        '<td colspan="2"><p>' +  MyMenu.minuman  + ' Minuman' + '</p></td>';
+                    menuApp += '</tr>';
+            }
+            else if(MyMenu.makanan > 0 && MyMenu.minuman == 0){
+                menuApp += '<tr>';
+                    menuApp +=
+                        '<td colspan="2"><p>' + 'Total Pesanan :' + ' </p></td>' +
+                        '<td colspan="2"><p>' + MyMenu.makanan  + ' Makanan' + '</p></td>';
+                    menuApp += '</tr>';
+            }
+
+            MyMenu.total = 0;
+            for (k = 0; k < menuList.length; k++){
+                MyMenu.total = MyMenu.total + parseInt(menuList[k].harga)*parseInt(menuList[k].jumlah);
+            }
+            menuApp += '<tr>';
+                menuApp +=
+                    '<td colspan="2"><p>' + 'Total Harga :' + ' </p></td>' +
+                    '<td><p>' + 'Rp ' + MyMenu.total + ' </p></td>'+
+                    '<td><button onclick="orderSendMessage()"  class="btn btn-success btn-small ">Pesan</button></td>';
+                menuApp += '</tr>';
+        }
+        else {
+            menuApp += '<tr>';
+                menuApp +=
+                    '<td colspan="4"><p>' + 'Belum ada menu yang dipesan' + ' </p></td>'
+                menuApp += '</tr>';
+        }
+ 
+        $('#orderMenuId').html(menuApp);
+    }
+}

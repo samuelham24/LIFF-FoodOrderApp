@@ -165,10 +165,6 @@ p {
 	height: 30px;
 }
 
-#sendMessageButton {
-	display: none;
-}
-
 .dec-value-hidden {
 	visibility: hidden;
 }

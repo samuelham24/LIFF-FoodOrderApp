@@ -119,7 +119,7 @@ function buttonHandlersSet() {
         });
     });
  
-document.getElementById('windowCloseId').addEventListener('click', () => {
+    document.getElementById('windowCloseId').addEventListener('click', () => {
         if (!liff.isInClient()) {
             notInClientAlert();
         } else {
@@ -146,24 +146,6 @@ document.getElementById('windowCloseId').addEventListener('click', () => {
         if (liff.isLoggedIn()) {
             liff.logout();
             window.location.reload();
-        }
-    });
-
-    document.getElementById('messageSendId').addEventListener('click', () => {
-        if (!liff.isInClient()) {
-            notInClientAlert();
-        } else {
-            if(MenuEmpty.NotEmpty){
-                    liff.sendMessages([{
-                        'type': 'text',
-                        'text': 
-                        `Terima kasih sudah mengunjungi Resto Indonesia!`,
-                    }]).then(function() {
-                        window.alert('Terima kasih sudah mengunjungi Resto Indonesia!');
-                    }).catch(function(error) {
-                        window.alert('Error sending message: ' + error);
-                    });
-            }
         }
     });
 }
