@@ -127,9 +127,7 @@ function buttonHandlersSet() {
             liff.sendMessages([{
                     'type': 'text',
                     'text': `Terima kasih sudah mengunjungi Resto Indonesia!`,
-                }]).then(() => {
-                    window.alert('Terima kasih sudah mengunjungi Resto Indonesia!');
-                }).catch((error) => {
+                }]).catch((error) => {
                     window.alert('Error sending message: ' + error);
                 });
             liff.closeWindow();
