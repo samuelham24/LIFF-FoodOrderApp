@@ -76,7 +76,8 @@ function getProfile(){
         }
     } else {
         document.getElementById("loginSectionId").style.display = "none";
-        loginSekarang();
+        document.getElementById("welcomeSectionId").style.display = "block";
+
         liff.getProfile().then(function (profile) {
                 getProfileName.getDisplayName = profile.displayName;
                 document.getElementById('displaynamefield').textContent = profile.displayName;
@@ -93,9 +94,8 @@ function getProfile(){
             }).catch(function (error) {
                 window.alert("Error getting profile: " + error);
             });
-    }
+        }
 }
- 
 
 function initializeApp() {
     displayLiffData();
