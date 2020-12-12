@@ -14,7 +14,7 @@ window.onload = function() {
                 initializeLiffOrDie(myLiffId);
             })
             .catch(function(error) {
-                document.getElementById("liffAppContent").classList.add('hidden');
+                document.getElementById("contentLiffId").classList.add('hidden');
                 document.getElementById("nodeLiffIdErrorMessage").classList.remove('hidden');
             });
     } else {
@@ -25,7 +25,7 @@ window.onload = function() {
  
 function initializeLiffOrDie(myLiffId) {
     if (!myLiffId) {
-        document.getElementById("liffAppContent").classList.add('hidden');
+        document.getElementById("contentLiffId").classList.add('hidden');
         document.getElementById("liffIdErrorMessage").classList.remove('hidden');
     } else {
         initializeLiff(myLiffId);
@@ -43,7 +43,7 @@ function initializeLiff(myLiffId) {
             getProfile();
         })
         .catch((err) => {
-            document.getElementById("liffAppContent").classList.add('hidden');
+            document.getElementById("contentLiffId").classList.add('hidden');
             console.log('error', err);
         });
 }
@@ -91,31 +91,31 @@ function initializeApp() {
     buttonHandlersSet();
  
     if (liff.isLoggedIn()) {
-        document.getElementById('liffLoginButton').disabled = true;
+        document.getElementById('loginButtonId').disabled = true;
     } else {
-        document.getElementById('liffLogoutButton').disabled = true;
+        document.getElementById('logoutButtonId').disabled = true;
     }
 }
  
 function liffDataStatus() {
-    document.getElementById('isInClient').textContent = liff.isInClient();
-    document.getElementById('isLoggedIn').textContent = liff.isLoggedIn();
+    document.getElementById('inClientStatus').textContent = liff.isInClient();
+    document.getElementById('loggedInStatus').textContent = liff.isLoggedIn();
 }
 
 function isInClientInfo() {
     if (liff.isInClient()) {
-        document.getElementById('liffLoginButton').classList.toggle('hidden');
-        document.getElementById('liffLogoutButton').classList.toggle('hidden');
-        document.getElementById('isInClientMessage').textContent = 'Aplikasi ini dibuka di browser bawaan LINE.';
+        document.getElementById('loginButtonId').classList.toggle('hidden');
+        document.getElementById('logoutButtonId').classList.toggle('hidden');
+        document.getElementById('inClientNotifId').textContent = 'Aplikasi ini dibuka di browser LINE App.';
         document.getElementById("loginSectionId").classList.add("login-section-hidden");
     } else {
-        document.getElementById('isInClientMessage').textContent = 'Aplikasi ini dibuka di browser eksternal.';
+        document.getElementById('inClientNotifId').textContent = 'Aplikasi ini dibuka di browser eksternal.';
         document.getElementById("loginSectionId").classList.add("login-section-show");
     }
 }
 
 function buttonHandlersSet() {
-    document.getElementById('openWindowButton').addEventListener('click', function() {
+    document.getElementById('windowOpenId').addEventListener('click', function() {
         liff.openWindow({
             url: 'https://liff-orderfoodapp.herokuapp.com//', 
             external: true
@@ -124,14 +124,14 @@ function buttonHandlersSet() {
 }
 
 function buttonHandlersSet() {
-    document.getElementById('openWindowButton').addEventListener('click', function() {
+    document.getElementById('windowOpenId').addEventListener('click', function() {
         liff.openWindow({
             url: 'https://liff-orderfoodapp.herokuapp.com//', 
             external: true
         });
     });
  
-document.getElementById('closeWindowButton').addEventListener('click', function() {
+document.getElementById('windowCloseId').addEventListener('click', function() {
         if (!liff.isInClient()) {
             notInClientAlert();
         } else {
@@ -148,20 +148,20 @@ document.getElementById('closeWindowButton').addEventListener('click', function(
         }
     });
 
-    document.getElementById('liffLoginButton').addEventListener('click', function() {
+    document.getElementById('loginButtonId').addEventListener('click', function() {
         if (!liff.isLoggedIn()) {
             liff.login();
         }
     });
  
-    document.getElementById('liffLogoutButton').addEventListener('click', function() {
+    document.getElementById('logoutButtonId').addEventListener('click', function() {
         if (liff.isLoggedIn()) {
             liff.logout();
             window.location.reload();
         }
     });
 
-    document.getElementById('sendMessageButton').addEventListener('click', function () {
+    document.getElementById('messageSendId').addEventListener('click', function () {
         if (!liff.isInClient()) {
             notInClientAlert();
         } else {

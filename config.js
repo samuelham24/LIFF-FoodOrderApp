@@ -69,7 +69,7 @@ function loadOrder() {
                 menuApp += '</tr>';
         }
  
-        $('#list-catatan').html(menuApp);
+        $('#orderMenuId').html(menuApp);
     }
 }
 
