@@ -70,8 +70,7 @@ function getProfile(){
             window.alert("Error getting profile: " + error);
         });
     } else {
-        document.getElementById('loginSuccesFieldId').textContent = 'Anda Belum Login';
-        document.getElementById('lanjutButtonId').disabled = true;
+        document.getElementById('lanjutButtonId').classList.toggle('hidden');
     }
 }
  
