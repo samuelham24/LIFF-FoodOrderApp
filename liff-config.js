@@ -1,41 +1,41 @@
-window.onload = function() {
+window.onload = () => {
     const useNodeJS = false;
-    const defaultLiffId = "1655339359-VGWqznYw";
+    const IdLiffDefault = "1655339359-VGWqznYw";
  
-    let myLiffId = "";
+    let IdLiff = "";
  
     if (useNodeJS) {
         fetch('/send-id')
-            .then(function(reqResponse) {
+            .then((reqResponse) => {
                 return reqResponse.json();
             })
-            .then(function(jsonResponse) {
-                myLiffId = jsonResponse.id;
-                initializeLiffOrDie(myLiffId);
+            .then((jsonResponse) => {
+                IdLiff = jsonResponse.id;
+                initializeLiffOrDie(IdLiff);
             })
-            .catch(function(error) {
+            .catch((error) =>  {
                 document.getElementById("contentLiffId").classList.add('hidden');
                 document.getElementById("nodeLiffIdErrorMessage").classList.remove('hidden');
             });
     } else {
-        myLiffId = defaultLiffId;
-        initializeLiffOrDie(myLiffId);
+        IdLiff = IdLiffDefault;
+        initializeLiffOrDie(IdLiff);
     }
 };
  
-function initializeLiffOrDie(myLiffId) {
-    if (!myLiffId) {
+function initializeLiffOrDie(IdLiff) {
+    if (!IdLiff) {
         document.getElementById("contentLiffId").classList.add('hidden');
         document.getElementById("liffIdErrorMessage").classList.remove('hidden');
     } else {
-        initializeLiff(myLiffId);
+        initializeLiff(IdLiff);
     }
 }
  
-function initializeLiff(myLiffId) {
+function initializeLiff(IdLiff) {
     liff
         .init({
-            liffId: myLiffId
+            liffId: IdLiff
         })
         .then(() => {
             // start to use LIFF's api
@@ -67,7 +67,7 @@ function getProfile(){
 }
 
 function getProfileData(){
-    liff.getProfile().then(function (profile) {
+    liff.getProfile().then((profile) => {
         getProfileName.getDisplayName = profile.displayName;
         document.getElementById('displaynamefield').textContent = profile.displayName;
         var profilePictureDiv = document.getElementById('profilepicturediv');
@@ -79,7 +79,7 @@ function getProfileData(){
         img.alt = "Profile Picture";
         img.width = 300;
         profilePictureDiv.appendChild(img);
-        }).catch(function (error) {
+        }).catch((error) => {
             window.alert("Error getting profile: " + error);
         });
 }
@@ -115,7 +115,7 @@ function isInClientInfo() {
 }
 
 function buttonHandlersSet() {
-    document.getElementById('windowOpenId').addEventListener('click', function() {
+    document.getElementById('windowOpenId').addEventListener('click', () => {
         liff.openWindow({
             url: 'https://liff-orderfoodapp.herokuapp.com//', 
             external: true
@@ -124,14 +124,14 @@ function buttonHandlersSet() {
 }
 
 function buttonHandlersSet() {
-    document.getElementById('windowOpenId').addEventListener('click', function() {
+    document.getElementById('windowOpenId').addEventListener('click', () => {
         liff.openWindow({
             url: 'https://liff-orderfoodapp.herokuapp.com//', 
             external: true
         });
     });
  
-document.getElementById('windowCloseId').addEventListener('click', function() {
+document.getElementById('windowCloseId').addEventListener('click', () => {
         if (!liff.isInClient()) {
             notInClientAlert();
         } else {
@@ -139,29 +139,29 @@ document.getElementById('windowCloseId').addEventListener('click', function() {
                     'type': 'text',
                     'text': 
                     `Terima kasih sudah mengunjungi Resto Indonesia!`,
-                }]).then(function() {
+                }]).then(() => {
                     window.alert('Terima kasih sudah mengunjungi Resto Indonesia!');
-                }).catch(function(error) {
+                }).catch((error) => {
                     window.alert('Error sending message: ' + error);
                 });
             liff.closeWindow();
         }
     });
 
-    document.getElementById('loginButtonId').addEventListener('click', function() {
+    document.getElementById('loginButtonId').addEventListener('click', () => {
         if (!liff.isLoggedIn()) {
             liff.login();
         }
     });
  
-    document.getElementById('logoutButtonId').addEventListener('click', function() {
+    document.getElementById('logoutButtonId').addEventListener('click', () => {
         if (liff.isLoggedIn()) {
             liff.logout();
             window.location.reload();
         }
     });
 
-    document.getElementById('messageSendId').addEventListener('click', function () {
+    document.getElementById('messageSendId').addEventListener('click', () => {
         if (!liff.isInClient()) {
             notInClientAlert();
         } else {
