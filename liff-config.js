@@ -70,7 +70,7 @@ function getProfile(){
             window.alert("Error getting profile: " + error);
         });
     } else {
-        document.getElementById('lanjutButtonId').classList.toggle('hidden');
+        document.getElementById("lanjutButtonId").style.display = "none";
     }
 }
  
