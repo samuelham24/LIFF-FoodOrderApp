@@ -22,7 +22,6 @@ function simpanDataNasgor() {
     window.localStorage.setItem('menuList', JSON.stringify(menuList));
     window.localStorage.setItem('menuId', menuId);
     loadOrder();
- 
     return false;
     }
 }
@@ -51,7 +50,6 @@ function simpanDataMie() {
     window.localStorage.setItem('menuList', JSON.stringify(menuList));
     window.localStorage.setItem('menuId', menuId);
     loadOrder();
- 
     return false;
     }
 }
@@ -80,7 +78,6 @@ function simpanDataJeruk() {
     window.localStorage.setItem('menuList', JSON.stringify(menuList));
     window.localStorage.setItem('menuId', menuId);
     loadOrder();
- 
     return false;
     }
 }
@@ -109,7 +106,6 @@ function simpanDataJambu() {
     window.localStorage.setItem('menuList', JSON.stringify(menuList));
     window.localStorage.setItem('menuId', menuId);
     loadOrder();
- 
     return false;
     }
 }
@@ -278,7 +274,6 @@ function loadOrder() {
                     '<td colspan="4"><p>' + 'Belum ada menu yang dipesan' + ' </p></td>'
                 menuApp += '</tr>';
         }
- 
         $('#orderMenuId').html(menuApp);
     }
 }

@@ -13,7 +13,7 @@ window.onload = () => {
                 IdLiff = jsonResponse.id;
                 initializeLiffOrDie(IdLiff);
             })
-            .catch((error) =>  {
+            .catch((error) => {
                 document.getElementById("contentLiffId").classList.add('hidden');
             });
     } else {
@@ -48,10 +48,11 @@ function getProfile(){
     if (!liff.isInClient()) {
         document.getElementById("loginSectionId").style.display = "block";
         if (liff.isLoggedIn()) {
-            document.getElementById('loginSuccesFieldId').textContent = 'Log in Berhasil!';
+            document.getElementById('loginSuccesFieldId').textContent = 'Log in Berhasil !';
             getProfileData();
         } else {
             document.getElementById("lanjutButtonId").style.display = "none";
+            document.getElementById('loginRequestMessageId').textContent = 'Sebelum pesan, silahkan login dahulu.';
         }
     } else if(liff.isInClient()){
         getProfileData();
@@ -105,7 +106,7 @@ function isInClientInfo() {
 function buttonHandlersSet() {
     document.getElementById('windowOpenId').addEventListener('click', () => {
         liff.openWindow({
-            url: 'https://liff-orderfoodapp.herokuapp.com//', 
+            url: 'https://liff-orderfoodapp.herokuapp.com/', 
             external: true
         });
     });
@@ -114,7 +115,7 @@ function buttonHandlersSet() {
 function buttonHandlersSet() {
     document.getElementById('windowOpenId').addEventListener('click', () => {
         liff.openWindow({
-            url: 'https://liff-orderfoodapp.herokuapp.com//', 
+            url: 'https://liff-orderfoodapp.herokuapp.com/', 
             external: true
         });
     });
@@ -125,8 +126,7 @@ function buttonHandlersSet() {
         } else {
             liff.sendMessages([{
                     'type': 'text',
-                    'text': 
-                    `Terima kasih sudah mengunjungi Resto Indonesia!`,
+                    'text': `Terima kasih sudah mengunjungi Resto Indonesia!`,
                 }]).then(() => {
                     window.alert('Terima kasih sudah mengunjungi Resto Indonesia!');
                 }).catch((error) => {
@@ -162,9 +162,9 @@ function orderSendMessage() {
                         `- ${MyMenu.makanan} makanan`+ `\n` + 
                         `- ${MyMenu.minuman} minuman`+ `\n\n` + 
                         `Total pembayaran anda sebesar Rp ${MyMenu.total}.`,
-                    }]).then(function() {
+                    }]).then(() => {
                         window.alert('Terima Kasih, daftar pesanan anda sudah kami kirim via chat.');
-                    }).catch(function(error) {
+                    }).catch((error) => {
                         window.alert('Error sending message: ' + error);
                     });
                 }
@@ -175,9 +175,9 @@ function orderSendMessage() {
                         `Terima kasih sudah mengunjungi Resto Indonesia!` + `\n\n` + `Pesanan saudara/i ${getProfileName.getDisplayName} yaitu :`+ `\n` + 
                         `- ${MyMenu.minuman} minuman`+ `\n\n` + 
                         `Total pembayaran anda sebesar Rp ${MyMenu.total}.`,
-                    }]).then(function() {
+                    }]).then(() => {
                         window.alert('Terima Kasih, daftar pesanan anda sudah kami kirim via chat.');
-                    }).catch(function(error) {
+                    }).catch((error) => {
                         window.alert('Error sending message: ' + error);
                     });
                 }
@@ -188,9 +188,9 @@ function orderSendMessage() {
                         `Terima kasih sudah mengunjungi Resto Indonesia!` + `\n\n` + `Pesanan saudara/i ${getProfileName.getDisplayName} yaitu :`+ `\n` + 
                         `- ${MyMenu.makanan} makanan`+ `\n\n` + 
                         `Total pembayaran anda sebesar Rp ${MyMenu.total}.`,
-                    }]).then(function() {
+                    }]).then(() => {
                         window.alert('Terima Kasih, daftar pesanan anda sudah kami kirim via chat.');
-                    }).catch(function(error) {
+                    }).catch((error) => {
                         window.alert('Error sending message: ' + error);
                     });
                 }
@@ -198,14 +198,5 @@ function orderSendMessage() {
     };
 
 function notInClientAlert() {
-    alert('Maaf, tombol ini tidak tersedia pada external.');
-}
- 
-function toggleElement(elementId) {
-    const elem = document.getElementById(elementId);
-    if (elem.offsetWidth > 0 && elem.offsetHeight > 0) {
-        elem.style.display = 'none';
-    } else {
-        elem.style.display = 'block';
-    }
+    alert('Maaf, tombol ini tidak tersedia pada external browser.');
 }
