@@ -26,21 +26,17 @@ function initializeLiffOrDie(IdLiff) {
     if (!IdLiff) {
         document.getElementById("contentLiffId").classList.add('hidden');
     } else {
-        initializeLiff(IdLiff);
+        LiffInit(IdLiff);
     }
 }
  
-function initializeLiff(IdLiff) {
-    liff
-        .init({
-            liffId: IdLiff
-        })
-        .then(() => {
-            // start to use LIFF's api
-            initializeApp();
+function LiffInit(IdLiff) {
+    liff.init({
+        liffId: IdLiff
+        }).then(() => {
+            AppLiffInit();
             getProfile();
-        })
-        .catch((err) => {
+        }).catch((err) => {
             document.getElementById("contentLiffId").classList.add('hidden');
             console.log('error', err);
         });
@@ -83,8 +79,7 @@ function getProfileData(){
 }
  
 
-function initializeApp() {
-    liffDataStatus();
+function AppLiffInit() {
     isInClientInfo();
     buttonHandlersSet();
  
@@ -93,11 +88,6 @@ function initializeApp() {
     } else {
         document.getElementById('logoutButtonId').disabled = true;
     }
-}
- 
-function liffDataStatus() {
-    document.getElementById('inClientStatus').textContent = liff.isInClient();
-    document.getElementById('loggedInStatus').textContent = liff.isLoggedIn();
 }
 
 function isInClientInfo() {
