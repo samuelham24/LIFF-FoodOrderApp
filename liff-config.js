@@ -52,7 +52,6 @@ var getProfileName = {}; //Global object
 
 function getProfile(){
     if (!liff.isInClient()) {
-        document.getElementById("loginSectionId").style.display = "block";
         if (liff.isLoggedIn()) {
             document.getElementById('loginSuccesFieldId').textContent = 'Log in Berhasil!';
             liff.getProfile().then(function (profile) {
@@ -76,26 +75,10 @@ function getProfile(){
         }
     } else {
         document.getElementById("loginSectionId").style.display = "none";
-        document.getElementById("welcomeSectionId").style.display = "block";
-
-        // liff.getProfile().then(function (profile) {
-        //         getProfileName.getDisplayName = profile.displayName;
-        //         document.getElementById('displaynamefield').textContent = profile.displayName;
-        
-        //         var profilePictureDiv = document.getElementById('profilepicturediv');
-        //         if (profilePictureDiv.firstElementChild) {
-        //             profilePictureDiv.removeChild(profilePictureDiv.firstElementChild);
-        //         }
-        //         var img = document.createElement('img');
-        //         img.src = profile.pictureUrl;
-        //         img.alt = "Profile Picture";
-        //         img.width = 300;
-        //         profilePictureDiv.appendChild(img);
-        //     }).catch(function (error) {
-        //         window.alert("Error getting profile: " + error);
-        //     });
-        }
+        loginSekarang();
+    }
 }
+ 
 
 function initializeApp() {
     displayLiffData();
