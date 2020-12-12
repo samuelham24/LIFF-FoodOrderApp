@@ -86,11 +86,10 @@ function getProfileData(){
  
 
 function initializeApp() {
-    displayLiffData();
-    displayIsInClientInfo();
-    registerButtonHandlers();
+    liffDataStatus();
+    isInClientInfo();
+    buttonHandlersSet();
  
-    // check if the user is logged in/out, and disable inappropriate button
     if (liff.isLoggedIn()) {
         document.getElementById('liffLoginButton').disabled = true;
     } else {
@@ -98,12 +97,12 @@ function initializeApp() {
     }
 }
  
-function displayLiffData() {
+function liffDataStatus() {
     document.getElementById('isInClient').textContent = liff.isInClient();
     document.getElementById('isLoggedIn').textContent = liff.isLoggedIn();
 }
 
-function displayIsInClientInfo() {
+function isInClientInfo() {
     if (liff.isInClient()) {
         document.getElementById('liffLoginButton').classList.toggle('hidden');
         document.getElementById('liffLogoutButton').classList.toggle('hidden');
@@ -115,26 +114,26 @@ function displayIsInClientInfo() {
     }
 }
 
-function registerButtonHandlers() {
+function buttonHandlersSet() {
     document.getElementById('openWindowButton').addEventListener('click', function() {
         liff.openWindow({
-            url: 'https://liff-orderfoodapp.herokuapp.com//', // Isi dengan Endpoint URL aplikasi web Anda
+            url: 'https://liff-orderfoodapp.herokuapp.com//', 
             external: true
         });
     });
 }
 
-function registerButtonHandlers() {
+function buttonHandlersSet() {
     document.getElementById('openWindowButton').addEventListener('click', function() {
         liff.openWindow({
-            url: 'https://liff-orderfoodapp.herokuapp.com//', // Isi dengan Endpoint URL aplikasi web Anda
+            url: 'https://liff-orderfoodapp.herokuapp.com//', 
             external: true
         });
     });
  
 document.getElementById('closeWindowButton').addEventListener('click', function() {
         if (!liff.isInClient()) {
-            sendAlertIfNotInClient();
+            notInClientAlert();
         } else {
             liff.sendMessages([{
                     'type': 'text',
@@ -164,7 +163,7 @@ document.getElementById('closeWindowButton').addEventListener('click', function(
 
     document.getElementById('sendMessageButton').addEventListener('click', function () {
         if (!liff.isInClient()) {
-            sendAlertIfNotInClient();
+            notInClientAlert();
         } else {
             if(MenuEmpty.NotEmpty){
                     liff.sendMessages([{
@@ -183,7 +182,7 @@ document.getElementById('closeWindowButton').addEventListener('click', function(
 
 function orderSendMessage() {
         if (!liff.isInClient()) {
-            sendAlertIfNotInClient();
+            notInClientAlert();
         } else {
                 if (MyMenu.makanan > 0 && MyMenu.minuman > 0){
                     liff.sendMessages([{
@@ -228,7 +227,7 @@ function orderSendMessage() {
         }
     };
 
-function sendAlertIfNotInClient() {
+function notInClientAlert() {
     alert('Maaf, tombol ini tidak tersedia pada external.');
 }
  
